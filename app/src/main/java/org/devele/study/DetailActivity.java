@@ -21,19 +21,32 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int number;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
         ImageView detail_image = findViewById(R.id.detail_image);
-        detail_image.setColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.MULTIPLY);
         Intent intent = getIntent();
+        number = intent.getIntExtra("number",0);
         String title = intent.getStringExtra("title");
         String teamName = intent.getStringExtra("teamName");
         TextView detail_title = findViewById(R.id.detail_title);
         TextView detail_teamname = findViewById(R.id.detail_teamname);
         detail_title.setText(title);
         detail_teamname.setText(teamName);
+        switch (number){
+            case 0:
+                detail_image.setImageResource(R.drawable.geun);
+                break;
+            case 1:
+                detail_image.setImageResource(R.drawable.dodam);
+                break;
+            case 2:
+                detail_image.setImageResource(R.drawable.today);
+                break;
+        }
     }
 
 }

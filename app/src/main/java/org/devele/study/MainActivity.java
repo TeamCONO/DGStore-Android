@@ -22,17 +22,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Sentence> allData;
+//    private RetrofitAPI retrofitAPI;
+//
+//    private
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +47,30 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         Adapter adapter = new Adapter();
-        for (int i = 1; i <= 50; i++) {
-            adapter.addItem(new Sentence("롤링루트" + i, "406soft"));
-            adapter.addItem(new Sentence("TTT" + i, "406soft"));
-        }
 
+
+
+//      }RetrofitClient retrofit = RetrofitClient.getInstance();
+//        RetrofitAPI api;
+//        if(retrofit != null) {
+//            api = RetrofitClient.getRetrofitAPI();
+//            api.getDiselData().enqueue(new Callback<DiselDataClass>() {
+//                @Override
+//                public void onResponse(Call<DiselDataClass> call, Response<DiselDataClass> response) {
+//                    DiselDataClass resultData = new DiselDataClass(response.body());
+//                    adapter.items = resultData;
+//                }
+//
+//                @Override
+//                public void onFailure(Call<DiselDataClass> call, Throwable t) {
+//                    //에러 처리
+//                    t.printStackTrace();
+//                }
+//            });
+//        }
+        adapter.addItem(new Sentence("RollingRoot","406soft"));
+        adapter.addItem(new Sentence("도담도담","B1ND"));
+        adapter.addItem(new Sentence("오늘하루","오늘하루"));
         allData = adapter.items;
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
@@ -65,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                 intent.putExtra("title", item.getTitle());
                 intent.putExtra("teamName", item.getTeamname());
+                intent.putExtra("number",position);
                 startActivity(intent);
             }
         });
