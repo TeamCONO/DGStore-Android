@@ -28,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.hide();
 
         ImageView detail_image = findViewById(R.id.detail_image);
+        detail_image.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
         Intent intent = getIntent();
         number = intent.getIntExtra("number",0);
         String title = intent.getStringExtra("title");
