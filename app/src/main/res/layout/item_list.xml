@@ -22,7 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_gravity="top|center"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:background="@drawable/example"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
